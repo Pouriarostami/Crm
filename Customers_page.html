@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه مشتریان</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* استایل نوار ابزار و فرم */
+        .toolbar {
+            background-color: #0059b3;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .form-container {
+            display: none;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        /* استایل جدول */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0059b3;
+            color: white;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-button {
+            background-color: #0059b3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-button:hover {
+            background-color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+    <!-- نوار ابزار بالای صفحه -->
+    <div class="toolbar">
+        <button onclick="showAddCustomerForm()" class="form-button">افزودن مشتری</button>
+    </div>
+
+    <!-- فرم افزودن مشتری -->
+    <div id="addCustomerForm" class="form-container">
+        <div class="form-field">
+            <label>نام و نام خانوادگی:</label>
+            <input type="text" id="customerName" placeholder="نام و نام خانوادگی را وارد کنید">
+        </div>
+        <div class="form-field">
+            <label>موضوع:</label>
+            <input type="text" id="customerSubject" placeholder="موضوع را وارد کنید">
+        </div>
+        <div class="form-field">
+            <label>شماره تماس:</label>
+            <input type="text" id="customerPhone" placeholder="شماره تماس را وارد کنید">
+        </div>
+        <div class="form-field">
+            <label>خلاصه صحبت:</label>
+            <textarea id="customerSummary" placeholder="خلاصه صحبت را وارد کنید"></textarea>
+        </div>
+        <div class="form-field">
+            <label>یادآور:</label>
+            <input type="date" id="customerReminder">
+        </div>
+        <button onclick="addCustomer()" class="form-button">ذخیره</button>
+    </div>
+
+    <!-- جدول مشتریان -->
+    <table>
+        <thead>
+            <tr>
+                <th>شماره</th>
+                <th>نام و نام خانوادگی</th>
+                <th>موضوع</th>
+                <th>شماره تماس</th>
+                <th>خلاصه صحبت</th>
+                <th>یادآور</th>
+                <th>تاریخ ایجاد</th>
+            </tr>
+        </thead>
+        <tbody id="customerTableBody">
+            <!-- مشتریان اینجا اضافه می‌شوند -->
+        </tbody>
+    </table>
+
+    <script>
+        let customerId = 1; // شمارنده برای شماره مشتری
+
+        // نمایش فرم افزودن مشتری
+        function showAddCustomerForm() {
+            document.getElementById('addCustomerForm').style.display = 'block';
+        }
+
+        // افزودن مشتری به جدول
+        function addCustomer() {
+            const name = document.getElementById('customerName').value;
+            const subject = document.getElementById('customerSubject').value;
+            const phone = document.getElementById('customerPhone').value;
+            const summary = document.getElementById('customerSummary').value;
+            const reminder = document.getElementById('customerReminder').value;
+            const date = new Date().toLocaleDateString('fa-IR'); // تاریخ به صورت خودکار
+
+            // ایجاد یک ردیف جدید در جدول
+            const table = document.getElementById('customerTableBody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${customerId++}</td>
+                <td>${name}</td>
+                <td>${subject}</td>
+                <td>${phone}</td>
+                <td>${summary}</td>
+                <td>${reminder}</td>
+                <td>${date}</td>
+            `;
+            table.appendChild(row);
+
+            // پاک کردن فیلدهای فرم بعد از افزودن
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerSubject').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerSummary').value = '';
+            document.getElementById('customerReminder').value = '';
+
+            // مخفی کردن فرم بعد از ذخیره
+            document.getElementById('addCustomerForm').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

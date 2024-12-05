@@ -1,0 +1,79 @@
+body {
+    font-family: Tahoma, sans-serif;
+    background-image: url('YOUR_BACKGROUND_IMAGE_URL'); /* آدرس تصویر زمینه */
+    background-size: cover;
+    color: #ffffff;
+}
+
+.main-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1c1c1c;
+    color: #ffbf00;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: #ffbf00;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 20px 0;
+}
+
+.sidebar a {
+    color: #61dafb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.topbar {
+    background-color: #1c1c1c;
+    color: #ffbf00;
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+}
+
+#content {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ffbf00;
+}
+
+button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+.hidden {
+    display: none;
+}
