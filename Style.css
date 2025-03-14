@@ -1,6 +1,6 @@
 body {
     font-family: Tahoma, sans-serif;
-    background-image: url('YOUR_BACKGROUND_IMAGE_URL'); /* آدرس تصویر زمینه */
+    background-image: url('Background.jpg'); /* آدرس تصویر زمینه */
     background-size: cover;
     color: #ffffff;
 }
